@@ -373,10 +373,12 @@ void InitEndpoints()
 static
 bool ClassInterfaceRequest(USBSetup& setup)
 {
+#ifndef DISABLE_CDC
 	u8 i = setup.wIndex;
 
 	if (CDC_ACM_INTERFACE == i)
 		return CDC_Setup(setup);
+#endif
 
 #ifdef PLUGGABLE_USB_ENABLED
 	return PluggableUSB().setup(setup);
@@ -466,7 +468,9 @@ static u8 SendInterfaces()
 {
 	u8 interfaces = 0;
 
+#ifndef DISABLE_CDC
 	CDC_GetInterface(&interfaces);
+#endif
 
 #ifdef PLUGGABLE_USB_ENABLED
 	PluggableUSB().getInterface(&interfaces);

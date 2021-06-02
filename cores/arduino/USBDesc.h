@@ -26,8 +26,13 @@
 
 #define ISERIAL_MAX_LEN     20
 
+#ifndef DISABLE_CDC
 #define CDC_INTERFACE_COUNT	2
 #define CDC_ENPOINT_COUNT	3
+#else
+#define CDC_INTERFACE_COUNT	0
+#define CDC_ENPOINT_COUNT	0
+#endif
 
 #define CDC_ACM_INTERFACE	0	// CDC ACM
 #define CDC_DATA_INTERFACE	1	// CDC Data
