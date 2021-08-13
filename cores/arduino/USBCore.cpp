@@ -24,7 +24,7 @@
 #if defined(USBCON)
 
 /** Pulse generation counters to keep track of the number of milliseconds remaining for each pulse type */
-#define TX_RX_LED_PULSE_MS 100
+#define TX_RX_LED_PULSE_MS 0
 volatile u8 TxLEDPulse; /**< Milliseconds remaining for data Tx LED pulse */
 volatile u8 RxLEDPulse; /**< Milliseconds remaining for data Rx LED pulse */
 
@@ -320,7 +320,7 @@ int USB_Send(u8 ep, const void* d, int len)
 			}
 		}
 	}
-	TXLED1;					// light the TX LED
+	//TXLED1;					// light the TX LED
 	TxLEDPulse = TX_RX_LED_PULSE_MS;
 	return r;
 }
